@@ -1,0 +1,57 @@
+.navbar {
+    position: fixed;
+    left: -225px;
+    z-index: 2;
+    padding: 25px 0px;
+    width: 250px;
+    height: 100vh;
+    border-right: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: left .5s;
+}
+
+.navbarActive {
+    left: 0;
+    transition: left .5s;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    width: 150px;
+    height: 40px;
+    background-color: #000;
+    transition: .5s all;
+}
+
+.btn:hover {
+    transition: .5s all;
+    background-color: rgb(64, 64, 64);
+}
+
+.menuToggle {
+    z-index: 3;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 96%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 60px;
+    background-color: #fff;
+}
