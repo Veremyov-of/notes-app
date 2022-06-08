@@ -1,0 +1,77 @@
+.form {
+    background-color: #000;
+    width: 300px;
+    height: auto;
+    border: 2px solid #fff;
+    padding-bottom: 20px;
+}
+
+.wrapp {
+    width: 100%;
+    height: 40px;
+    border-bottom: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0px 8px;
+    width: 100%;
+    border: none;
+    background-color: #000;
+    outline: none;
+    height: 100%;
+}
+
+.btn {
+    outline: none;
+    border: none;
+    min-width: 38px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-left: 2px solid #fff;
+    background-color: #000;
+}
+
+.btn:last-child:hover {
+    background-color: #ef4747;
+}
+.btn:nth-child(2):hover {
+    background-color: #47cdef;
+}
+
+.wrappText {
+    padding: 15px 10px;
+    width: 100%;
+    height: auto;
+}
+
+.ContentEditable {
+    position: relative;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4em;
+    outline: none;
+}
+
+.ContentEditable::selection,
+.input::selection {
+    color: #000;
+    background-color: #fff;
+}
+
+.ContentEditable::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    background-color: #fff;
+    height: 1px;
+    width: 100%;
+}
