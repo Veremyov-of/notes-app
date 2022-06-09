@@ -5,6 +5,7 @@
     height: auto;
     border: 2px solid #fff;
     padding-bottom: 20px;
+    animation: noteCreate .3s linear;
 }
 
 .wrapp {
@@ -75,4 +76,16 @@
     background-color: #fff;
     height: 1px;
     width: 100%;
+}
+
+
+
+@keyframes noteCreate {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+
 }

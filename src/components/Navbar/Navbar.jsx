@@ -6,12 +6,7 @@ function Navbar() {
     const {navbar, setNavbar, notes, setNotes} = useContext(MainContext);
 
     function createNote() {
-        const note = {
-            id: Date.now(),
-            title: 'Empty Note',
-             text: 'some text...'
-        }
-        setNotes([...notes, note]);
+        setNotes([...notes, {id: Date.now()}]);
     }
 
     return (
