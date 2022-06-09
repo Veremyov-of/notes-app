@@ -55,3 +55,10 @@
     height: 60px;
     background-color: #fff;
 }
+
+.arrow {
+}
+
+.arrowActive {
+    transform: rotate(180deg);
+}

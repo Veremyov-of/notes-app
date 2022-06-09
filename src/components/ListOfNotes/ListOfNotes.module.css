@@ -1,0 +1,15 @@
+.listOfNotes {
+    /* width: 100%; */
+    padding-top: 20px;
+    margin-left: 40px;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    transition: all .7s;
+}
+
+.active {
+    margin-left: 270px;
+    transition: all .5s;
+}
