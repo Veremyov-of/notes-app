@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
-import './App.css';
+//components
 import ListOfNotes from './components/ListOfNotes/ListOfNotes';
 import Navbar from './components/Navbar/Navbar';
+
+//context
 import { MainContext } from './Context';
 
 function App() {
@@ -12,26 +14,25 @@ function App() {
   const [globalhashtags, setGlobalHashtags] = useState(['none',]);
   const [selectTag, setSelectTag] = useState('none');
   const [noteFilter, setNoteFilter] = useState([]);
+
+  const initialState = {
+    navbar,
+    setNavbar,
+    notes,
+    setNotes,
+    globalhashtags,
+    setGlobalHashtags,
+    selectTag,
+    setSelectTag,
+    noteFilter,
+    setNoteFilter,
+}
   
   return (
-    <MainContext.Provider value={{
-      navbar,
-      setNavbar,
-      notes,
-      setNotes,
-      globalhashtags,
-      setGlobalHashtags,
-      selectTag,
-      setSelectTag,
-      noteFilter,
-      setNoteFilter,
-    }}>
-      <div className="App">
-        <div>
+    <MainContext.Provider value={initialState}>
+      <div>
           <Navbar />
           <ListOfNotes />
-          {/* <CompTest /> */}
-        </div>
       </div>
     </MainContext.Provider>
   );

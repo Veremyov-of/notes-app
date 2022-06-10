@@ -1,6 +1,9 @@
 import { useState, useContext, useEffect } from 'react';
 import cl from './NoteItem.module.css';
 import { MainContext } from './../../Context/index';
+import HashtagsNote from '../HashtagsNote/HashtagsNote';
+import TextArea from '../TextArea/TextArea';
+import HeaderNote from './../HeaderNote/HeaderNote';
 
 function NoteItem({id, item}) {
     const {notes, setNotes, setGlobalHashtags, globalhashtags} = useContext(MainContext);
@@ -28,12 +31,23 @@ function NoteItem({id, item}) {
         textElem.style.height = `${textHeight}px`;
     }
 
+    function changeTitle(value) {
+        setTitle(value);
+    }
+
     useEffect(() => {
         handleEdit(false);
     }, [])
  
     function deleteNote() {
         const index = notes.findIndex(item => item.id === id);
+        
+        for(let i = 0; i < hashtags.length; i++) {
+            let index = globalhashtags.indexOf(hashtags[i]);
+            globalhashtags.splice(index, 1);
+            setGlobalHashtags([...globalhashtags]);
+        }
+
         notes.splice(index, 1)
         setNotes([...notes]);
     }
@@ -55,8 +69,6 @@ function NoteItem({id, item}) {
             }))
             setGlobalHashtags([...globalhashtags, ...hashtags]);
         }
-        
-        
     }
 
     function checkHashtags (value) {  
@@ -66,7 +78,6 @@ function NoteItem({id, item}) {
     function deleteHashtegs(index) {
         const gIndex = globalhashtags.indexOf(hashtags[index]);
         globalhashtags.splice(gIndex, 1);
-        console.log(globalhashtags);
         setGlobalHashtags([...globalhashtags]);
 
         const arr = textArea.split(' ').filter(item => hashtags[index] !== item);
@@ -76,37 +87,9 @@ function NoteItem({id, item}) {
 
     return (
         <div id='form' className={cl.form}>
-            <div className={cl.wrapp}>
-                <input title="title note" disabled={edit} className={cl.input} onChange={(e) => setTitle(e.target.value)} value={title} type="text" />
-                <button title="edit" type="button" className={cl.btn} onClick={() => handleEdit()}>
-                    <img alt="edit" src={edit ? `./img/icon/edit.png` : `./img/icon/done.png`}/>
-                </button>
-                <button title='delete note' onClick={deleteNote} type="button" className={cl.btn}>
-                    <img alt="delete" src="./img/icon/delete.png" />
-                </button>
-            </div>
-            <div id="text" className={cl.wrappText}>
-                <div className={cl.container}>
-                    {!edit ? 
-                        textArea.split(' ').map((item, index) => {
-                            item = item + ' ';
-                            if(item[0] === '#') 
-                                return <div key={index} className={cl.hashSpan}>{item}</div>;
-                            return item;
-                        })
-                        :
-                        textArea
-                    }
-                </div>
-                <textarea disabled={edit} className={cl.textArea} onChange={(e) => changeText(e.target.value)} value={textArea}/>
-            </div>
-            <div className={cl.hashtags}>
-                {hashtags.map((item, index) => (
-                    <div title={edit ? 'to delete it, click edit' : 'delete hashteg'} onClick={edit ? null : () => deleteHashtegs(index)} className={cl.itemHashtag} key={index}>
-                        {item}
-                    </div>
-                ))}
-            </div>
+            <HeaderNote edit={edit} deleteNote={deleteNote} handleEdit={handleEdit} title={title} changeTitle={changeTitle} />
+            <TextArea edit={edit} textArea={textArea} changeText={changeText} />
+            <HashtagsNote edit={edit} hashtags={hashtags} deleteHashtegs={deleteHashtegs}/>
         </div>
     );
 }

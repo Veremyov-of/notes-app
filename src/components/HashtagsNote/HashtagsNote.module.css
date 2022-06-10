@@ -1,0 +1,14 @@
+.hashtags {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.itemHashtag {
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 2px;
+    background-color: rgb(79, 196, 97);
+}
+.itemHashtag:nth-child(2n) {
+    background-color: rgb(79, 112, 196);
+}

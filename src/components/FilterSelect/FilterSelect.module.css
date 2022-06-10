@@ -7,6 +7,12 @@
     padding-left: 10px;
     color: #fff;
     outline: none;
+    transition: .5s all;
+}
+
+.filterSelect:hover {
+    transition: .5s all;
+    background-color: rgb(64, 64, 64);
 }
 
 .hashOption {

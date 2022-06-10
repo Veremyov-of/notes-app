@@ -10,7 +10,7 @@ function FilterSelect() {
 
     const hashtagsOptions = [...new Set(globalhashtags)];
 
-    function changeSelectTag(e) {
+    function changeSelectTag() {
         return (e) => setSelectTag(e.target.value);
     }
 
