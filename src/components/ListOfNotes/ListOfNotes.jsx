@@ -7,7 +7,7 @@ function ListOfNotes() {
     const {navbar, notes} = useContext(MainContext);
     return (
         <div className={navbar ? `${cl.listOfNotes} ${cl.active}` : cl.listOfNotes}>
-            {notes.map((item) => <NoteItem key={item.id} id={item.id}/>)}
+            {notes.map((item) => <NoteItem key={item.id} id={item.id} item={item}/>)}
         </div>
       );
 }

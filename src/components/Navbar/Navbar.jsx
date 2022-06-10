@@ -1,5 +1,5 @@
 import cl from './Navbar.module.css';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { MainContext } from './../../Context/index';
 
 function Navbar() {

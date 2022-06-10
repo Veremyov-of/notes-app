@@ -42,6 +42,7 @@
 }
 
 .menuToggle {
+    outline: none;
     z-index: 3;
     cursor: pointer;
     position: absolute;
@@ -54,9 +55,6 @@
     width: 20px;
     height: 60px;
     background-color: #fff;
-}
-
-.arrow {
 }
 
 .arrowActive {
