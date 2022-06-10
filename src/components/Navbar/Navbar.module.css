@@ -60,7 +60,3 @@
 .arrowActive {
     transform: rotate(180deg);
 }
-
-.filterSelect {
-    color: red;
-}

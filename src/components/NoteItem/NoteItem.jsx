@@ -65,8 +65,8 @@ function NoteItem({id, item}) {
 
     function deleteHashtegs(index) {
         const gIndex = globalhashtags.indexOf(hashtags[index]);
-        console.log(gIndex);
         globalhashtags.splice(gIndex, 1);
+        console.log(globalhashtags);
         setGlobalHashtags([...globalhashtags]);
 
         const arr = textArea.split(' ').filter(item => hashtags[index] !== item);

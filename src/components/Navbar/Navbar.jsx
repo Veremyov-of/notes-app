@@ -1,10 +1,12 @@
 import cl from './Navbar.module.css';
 import { useContext } from 'react';
 import { MainContext } from './../../Context/index';
+import FilterSelect from '../FilterSelect/FilterSelect';
 
 function Navbar() {
     const {navbar, setNavbar, notes, setNotes, globalhashtags, selectTag, setSelectTag} = useContext(MainContext);
     function createNote() {
+        setSelectTag('none');
         setNotes([...notes, {
             hashtags: [],
             id: Date.now(),
@@ -24,11 +26,7 @@ function Navbar() {
                     Add a Note 
                     <img alt="add" src="./img/icon/add.png"/>
                 </button>
-                <select className={cl.filterSelect} onChange={(e) => setSelectTag(e.target.value)} value={selectTag}>
-                    {[...new Set(globalhashtags)].map((item, index) => {
-                        return <option value={item} key={index}>{item}</option>
-                    })}
-                </select>
+                <FilterSelect />
             </div>
             <button onClick={() => setNavbar(!navbar)} className={cl.menuToggle}> 
                 <img className={navbar ? cl.arrow : cl.arrowActive} alt='menuToggle' src="./img/icon/arrow.png" />
