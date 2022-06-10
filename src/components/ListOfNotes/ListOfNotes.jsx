@@ -1,13 +1,20 @@
 import NoteItem from '../NoteItem/NoteItem';
 import cl from './ListOfNotes.module.css';
-import { useContext } from 'react';
+import { useContext, useEffect} from 'react';
 import { MainContext } from './../../Context/index';
 
 function ListOfNotes() {
-    const {navbar, notes} = useContext(MainContext);
+    const {navbar, notes, selectTag, noteFilter, setNoteFilter} = useContext(MainContext);
+    useEffect(() => {
+        if(selectTag !== 'none') {
+            setNoteFilter(notes.filter(item => item.hashtags.includes(selectTag)));
+        } else {
+            setNoteFilter([...notes]);
+        }
+    }, [selectTag, notes])
     return (
         <div className={navbar ? `${cl.listOfNotes} ${cl.active}` : cl.listOfNotes}>
-            {notes.map((item) => <NoteItem key={item.id} id={item.id} item={item}/>)}
+            {noteFilter.map((item) => <NoteItem key={item.id} id={item.id} item={item}/>)}
         </div>
       );
 }
