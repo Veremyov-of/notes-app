@@ -10,8 +10,10 @@ import HeaderNote from './../HeaderNote/HeaderNote';
 import cl from './NoteItem.module.css';
 
 function NoteItem({ item }) {
-    const {notes, setNotes, setGlobalHashtags, globalhashtags} = useContext(MainContext);
+    const { notes, setNotes } = useContext(MainContext);
     
+    const [edit, setEdit] = useState(false);
+
     const [noteItem, setNoteItem] = useState({
         id: item.id,
         title: item.title,
@@ -19,61 +21,45 @@ function NoteItem({ item }) {
         text: item.text,
         formHeight: item.formHeight,
     });
+
+    useEffect(() => {
+        handleEdit();
+    }, [])
     
     function adaptiveHeight() {
         const formElem = document.getElementById(noteItem.id);
         formElem.style.height = `${noteItem.formHeight}px`;
     }
 
-    const [edit, setEdit] = useState(false);
-
-    function handleEdit(stateEdit = edit) {
+    function handleEdit() {
         adaptiveHeight();
-        setEdit(!stateEdit);
-        if(!stateEdit) {
-            setNotes(notes.map(item => item.id === noteItem.id ? noteItem : item));
-            setGlobalHashtags([...globalhashtags, ...noteItem.hashtags]);
-        }
+        setEdit(!edit);
+        setNotes(notes.map(item => item.id === noteItem.id ? noteItem : item));    
     }
+
     function changeText(value) {
         setNoteItem({
             ...noteItem,
             text: value,
-            hashtags: onlyInstancesTags(),
+            hashtags: onlyInstancesTags(value),
             formHeight: calcHeight(value),
         });
         adaptiveHeight();
     }
     
-    const onlyInstancesTags = () => [...new Set(value.split(' ').filter(item => item[0] === '#'))];
+    const onlyInstancesTags = (value) => [...new Set(value.split(' ').filter(item => item[0] === '#'))];
 
     const calcHeight = (value) => value.length >= 160 ? 250 + (Math.floor(value.length / 160) * 100) : 250;
 
-
     const changeTitle = (value) => setNoteItem({...noteItem, title: value});
-
-    useEffect(() => {
-        handleEdit(false);
-    }, [])
- 
+    
     function deleteNote() {
         const index = notes.findIndex(item => item.id === noteItem.id);
-        
-        for(let i = 0; i < noteItem.hashtags.length; i++) {
-            let index = globalhashtags.indexOf(noteItem.hashtags[i]);
-            globalhashtags.splice(index, 1);
-            setGlobalHashtags([...globalhashtags]);
-        }
-
         notes.splice(index, 1)
         setNotes([...notes]);
     }
 
     function deleteHashtegs(index) {
-        const gIndex = globalhashtags.indexOf(noteItem.hashtags[index]);
-        globalhashtags.splice(gIndex, 1);
-        setGlobalHashtags([...globalhashtags]);
-
         const arrText = noteItem.text.split(' ').filter(item => item !== noteItem.hashtags[index]);
         setNoteItem({
             ...noteItem,

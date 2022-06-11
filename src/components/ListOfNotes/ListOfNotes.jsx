@@ -8,14 +8,21 @@ import NoteItem from '../NoteItem/NoteItem';
 import cl from './ListOfNotes.module.css';
 
 function ListOfNotes() {
-    const {navbar, notes, selectTag, noteFilter, setNoteFilter} = useContext(MainContext);
+    const {navbar, notes, selectTag, noteFilter, setNoteFilter, setGlobalHashtags} = useContext(MainContext);
+    
     useEffect(() => {
         if(selectTag !== 'none') {
             setNoteFilter(notes.filter(item => item.hashtags.includes(selectTag)));
         } else {
             setNoteFilter([...notes]);
         }
-    }, [ notes, selectTag])
+    }, [ notes, selectTag]);
+
+    useEffect(() => {
+        let arr = notes.map(item => item.hashtags);
+        arr = arr.flat();
+        setGlobalHashtags([...new Set(['none', ...arr])]);
+    }, [notes])
     return (
         <div className={navbar ? `${cl.listOfNotes} ${cl.active}` : cl.listOfNotes}>
             {noteFilter.map((item) => <NoteItem key={item.id} item={item}/>)}
