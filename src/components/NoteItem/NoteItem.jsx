@@ -1,9 +1,13 @@
 import { useState, useContext, useEffect } from 'react';
-import cl from './NoteItem.module.css';
 import { MainContext } from './../../Context/index';
+
+//components
 import HashtagsNote from '../HashtagsNote/HashtagsNote';
 import TextArea from '../TextArea/TextArea';
 import HeaderNote from './../HeaderNote/HeaderNote';
+
+//css
+import cl from './NoteItem.module.css';
 
 function NoteItem({ item }) {
     const {notes, setNotes, setGlobalHashtags, globalhashtags} = useContext(MainContext);
@@ -35,7 +39,7 @@ function NoteItem({ item }) {
         setNoteItem({
             ...noteItem,
             text: value,
-            hashtags: [... new Set(value.split(' ').filter(item => item[0] === '#'))]
+            hashtags: [...new Set(value.split(' ').filter(item => item[0] === '#'))]
         });
         if(value.length === noteItem.textLength) {
             setNoteItem({...noteItem,
@@ -78,10 +82,10 @@ function NoteItem({ item }) {
         globalhashtags.splice(gIndex, 1);
         setGlobalHashtags([...globalhashtags]);
 
-        const arr = noteItem.text.split(' ').filter(item => noteItem.hashtags[index] !== item);
+        const arrText = noteItem.text.split(' ').filter(item => item !== noteItem.hashtags[index]);
         setNoteItem({
             ...noteItem,
-            text: arr.join(' '),
+            text: arrText.join(' '),
             hashtags: noteItem.hashtags.filter(item => item !== noteItem.hashtags[index])
         })
     }
