@@ -11,7 +11,7 @@ function HashtagsNote({ edit, hashtags, deleteHashtegs }) {
                     <div
                         title={titleCheck}
                         onClick={edit ? null : () => deleteHashtegs(index)}
-                        className={cl.itemHashtag} 
+                        className={edit ? cl.itemHashtagActive : cl.itemHashtag} 
                         key={index}
                     >
                         {item}

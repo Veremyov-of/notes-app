@@ -19,10 +19,9 @@ function ListOfNotes() {
     }, [ notes, selectTag]);
 
     useEffect(() => {
-        let arr = notes.map(item => item.hashtags);
-        arr = arr.flat();
+        let arr = notes.map(item => item.hashtags).flat();
         setGlobalHashtags([...new Set(['none', ...arr])]);
-    }, [notes])
+    }, [notes]);
     return (
         <div className={navbar ? `${cl.listOfNotes} ${cl.active}` : cl.listOfNotes}>
             {noteFilter.map((item) => <NoteItem key={item.id} item={item}/>)}

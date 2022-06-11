@@ -8,6 +8,16 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
+.itemHashtagActive {
+    margin: 0 2px;
+    background-color: transparent;
+    color: rgb(79, 196, 97);
+}
+.itemHashtagActive:nth-child(2n) {
+    color: rgb(79, 112, 196);
+}
+
 .itemHashtag {
     border-radius: 5px;
     cursor: pointer;
