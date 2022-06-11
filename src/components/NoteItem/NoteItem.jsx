@@ -34,6 +34,7 @@ function NoteItem({id, item}) {
     function changeTitle(value) {
         setTitle(value);
     }
+    console.log('refState')
 
     useEffect(() => {
         handleEdit(false);

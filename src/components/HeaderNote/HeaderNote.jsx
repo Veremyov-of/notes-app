@@ -1,3 +1,4 @@
+//css
 import cl from './HeaderNote.module.css';
 
 function HeaderNote({ edit, deleteNote, handleEdit, title, changeTitle}) {

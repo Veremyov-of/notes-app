@@ -1,10 +1,14 @@
-import cl from './Navbar.module.css';
 import { useContext } from 'react';
 import { MainContext } from './../../Context/index';
+
+//components
 import FilterSelect from '../FilterSelect/FilterSelect';
 
+//css
+import cl from './Navbar.module.css';
+
 function Navbar() {
-    const {navbar, setNavbar, notes, setNotes, globalhashtags, selectTag, setSelectTag} = useContext(MainContext);
+    const {navbar, setNavbar, notes, setNotes, setSelectTag} = useContext(MainContext);
     function createNote() {
         setSelectTag('none');
         setNotes([...notes, {
