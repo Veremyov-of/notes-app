@@ -8,7 +8,7 @@ function HashtagsNote({ edit, hashtags, deleteHashtegs }) {
     return ( 
         <div className={cl.hashtags}>
                 {hashtags.map((item, index) => (
-                    <div 
+                    <div
                         title={titleCheck}
                         onClick={edit ? null : () => deleteHashtegs(index)}
                         className={cl.itemHashtag} 

@@ -11,49 +11,40 @@ import cl from './NoteItem.module.css';
 
 function NoteItem({ item }) {
     const {notes, setNotes, setGlobalHashtags, globalhashtags} = useContext(MainContext);
-
+    
     const [noteItem, setNoteItem] = useState({
         id: item.id,
         title: item.title,
         hashtags: item.hashtags,
         text: item.text,
         formHeight: item.formHeight,
-        textHeight: item.textHeight,
         textLength: item.textLength,
     });
+    
+    function adaptiveHeight() {
+        const formElem = document.getElementById(noteItem.id);
+        formElem.style.height = `${noteItem.formHeight}px`;
+    }
 
     const [edit, setEdit] = useState(false);
 
-    const formElem = document.getElementById('form');
-    const textElem = document.getElementById('text');
-
     function handleEdit(stateEdit = edit) {
+        adaptiveHeight();
         setEdit(!stateEdit);
         if(!stateEdit) {
             setNotes(notes.map(item => item.id === noteItem.id ? noteItem : item));
             setGlobalHashtags([...globalhashtags, ...noteItem.hashtags]);
         }
     }
-
     function changeText(value) {
         setNoteItem({
             ...noteItem,
             text: value,
-            hashtags: [...new Set(value.split(' ').filter(item => item[0] === '#'))]
+            hashtags: [...new Set(value.split(' ').filter(item => item[0] === '#'))],
+            formHeight: value.length > noteItem.textLength ? noteItem.textLength + 100 : noteItem.formHeight,
+            textLength: value.length > noteItem.textLength ? noteItem.textLength + value.length : noteItem.textLength,
         });
-        if(value.length === noteItem.textLength) {
-            setNoteItem({...noteItem,
-                formHeight: noteItem.formHeight + 100,
-                textHeight: noteItem.textHeight + 100,
-                textLength: noteItem.textLength + 160,
-            });
-        }
         adaptiveHeight();
-    }
-
-    function adaptiveHeight() {
-        formElem.style.height = `${noteItem.formHeight}px`;
-        textElem.style.height = `${noteItem.textHeight}px`;
     }
 
     function changeTitle(value) {
@@ -91,7 +82,7 @@ function NoteItem({ item }) {
     }
 
     return (
-        <div id='form' className={cl.form}>
+        <div id={noteItem.id} className={cl.form}>
             <HeaderNote edit={edit} deleteNote={deleteNote} handleEdit={handleEdit} title={noteItem.title} changeTitle={changeTitle} />
             <TextArea edit={edit} textArea={noteItem.text} changeText={changeText} />
             <HashtagsNote edit={edit} hashtags={noteItem.hashtags} deleteHashtegs={deleteHashtegs}/>

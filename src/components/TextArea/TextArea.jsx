@@ -1,12 +1,12 @@
 //css
 import cl from './TextArea.module.css';
 
-function TextArea({edit, textArea, changeText}) {
+function TextArea({ edit, textArea, changeText}) {
 
     const arrTextArea = textArea.split(' ');
 
     return ( 
-        <div id="text" className={cl.wrappText}>
+        <div className={cl.wrappText}>
             <div className={cl.container}>
                 {!edit ? 
                     arrTextArea.map((item, index) => {
