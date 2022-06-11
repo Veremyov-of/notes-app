@@ -18,7 +18,7 @@ function ListOfNotes() {
     }, [ notes, selectTag])
     return (
         <div className={navbar ? `${cl.listOfNotes} ${cl.active}` : cl.listOfNotes}>
-            {noteFilter.map((item) => <NoteItem key={item.id} id={item.id} item={item}/>)}
+            {noteFilter.map((item) => <NoteItem key={item.id} item={item}/>)}
         </div>
       );
 }
