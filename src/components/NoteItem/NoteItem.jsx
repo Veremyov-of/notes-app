@@ -18,7 +18,6 @@ function NoteItem({ item }) {
         hashtags: item.hashtags,
         text: item.text,
         formHeight: item.formHeight,
-        textLength: item.textLength,
     });
     
     function adaptiveHeight() {
@@ -37,29 +36,21 @@ function NoteItem({ item }) {
         }
     }
     function changeText(value) {
-        // setNoteItem({
-        //     ...noteItem,
-        //     text: value,
-        //     hashtags: [...new Set(value.split(' ').filter(item => item[0] === '#'))],
-        //     formHeight: value.length > noteItem.textLength ? noteItem.textLength + 100 : noteItem.formHeight,
-        //     textLength: value.length > noteItem.textLength ? noteItem.textLength + value.length : noteItem.textLength,
-        // });
-        
-        // let a = value.length > 160 ? 0 : 250;
         setNoteItem({
             ...noteItem,
             text: value,
-            hashtags: [...new Set(value.split(' ').filter(item => item[0] === '#'))],
-            formHeight: value.length >= 160 ? 250 + (Math.floor(value.length / 160) * 100) : 250,
+            hashtags: onlyInstancesTags(),
+            formHeight: calcHeight(value),
         });
-        console.log(value.length)
-        console.log(noteItem.formHeight)
         adaptiveHeight();
     }
+    
+    const onlyInstancesTags = () => [...new Set(value.split(' ').filter(item => item[0] === '#'))];
 
-    function changeTitle(value) {
-        setNoteItem({...noteItem, title: value});
-    }
+    const calcHeight = (value) => value.length >= 160 ? 250 + (Math.floor(value.length / 160) * 100) : 250;
+
+
+    const changeTitle = (value) => setNoteItem({...noteItem, title: value});
 
     useEffect(() => {
         handleEdit(false);

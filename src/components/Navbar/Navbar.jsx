@@ -17,7 +17,6 @@ function Navbar() {
             title: 'Empty Note',
             text: 'some text...',
             formHeight: 250,
-            textLength: 250,
         }]);
     }
 
