@@ -32,7 +32,7 @@ function NoteItem({ note }) {
     function handleEdit() {
         adaptiveHeight();
         setEdit(!edit);
-        setNotes(notes.map(note => note.id === noteItem.id ? noteItem : note)); 
+        setNotes(notes.map(note => note.id === noteItem.id ? noteItem : note));
     }
 
 

@@ -8,9 +8,10 @@ import Navbar from './components/Navbar/Navbar';
 import { MainContext } from './Context';
 
 function App() {
+  const localDate = JSON.parse(localStorage.getItem('notes')) || [];
 
   const [navbar, setNavbar] = useState(true);
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(localDate);
   const [globalhashtags, setGlobalHashtags] = useState(['none',]);
   const [selectTag, setSelectTag] = useState('none');
   const [noteFilter, setNoteFilter] = useState([]);
