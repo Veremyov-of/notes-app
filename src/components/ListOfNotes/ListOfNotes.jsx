@@ -21,7 +21,6 @@ function ListOfNotes() {
     useEffect(() => {
         let arr = notes.map(item => item.hashtags).flat();
         setGlobalHashtags([...new Set(['none', ...arr])]);
-        localStorage.setItem('notes', JSON.stringify(notes));
     }, [notes]);
     return (
         <div className={navbar ? `${cl.listOfNotes} ${cl.active}` : cl.listOfNotes}>

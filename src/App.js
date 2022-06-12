@@ -7,11 +7,12 @@ import Navbar from './components/Navbar/Navbar';
 //context
 import { MainContext } from './Context';
 
-function App() {
-  const localDate = JSON.parse(localStorage.getItem('notes')) || [];
+//hooks
+import { useLocalStorage } from './hooks/useLocalStorage';
 
+function App() {
+  const [notes, setNotes] = useLocalStorage('notes', []);
   const [navbar, setNavbar] = useState(true);
-  const [notes, setNotes] = useState(localDate);
   const [globalhashtags, setGlobalHashtags] = useState(['none',]);
   const [selectTag, setSelectTag] = useState('none');
   const [noteFilter, setNoteFilter] = useState([]);
