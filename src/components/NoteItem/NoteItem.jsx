@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import { MainContext } from './../../Context/index';
 
 //components
@@ -32,8 +32,9 @@ function NoteItem({ note }) {
     function handleEdit() {
         adaptiveHeight();
         setEdit(!edit);
-        setNotes(notes.map(note => note.id === noteItem.id ? noteItem : note));    
+        setNotes(notes.map(note => note.id === noteItem.id ? noteItem : note)); 
     }
+
 
     function changeText(value) {
         setNoteItem({
@@ -67,6 +68,7 @@ function NoteItem({ note }) {
             hashtags: noteItem.hashtags.filter(hashtag => hashtag !== noteItem.hashtags[index])
         })
     }
+    
 
     return (
          <div className={cl.formWrapp}>

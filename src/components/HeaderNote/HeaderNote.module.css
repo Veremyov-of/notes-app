@@ -31,6 +31,10 @@
     background-color: #000;
 }
 
+.btnActive {
+    background-color: #47ef5b;
+}
+
 .btn:last-child:hover {
     background-color: #ef4747;
 }
