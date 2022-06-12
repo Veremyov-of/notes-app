@@ -12,6 +12,11 @@ body {
     background-color: #000;
 }
 
+.main {
+    width: 100vw;
+    overflow: hidden;
+}
+
 button {
     border: none;
     background-color: #000;

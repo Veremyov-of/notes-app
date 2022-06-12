@@ -1,12 +1,13 @@
 .hashtags {
-    border-top: 2px solid #fff;
-    width: 100%;
+    border: 2px solid #fff;
+    border-top: none;
+    width: 300px;
     min-height: 50px;
     height: auto;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .itemHashtagActive {

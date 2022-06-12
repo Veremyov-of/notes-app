@@ -30,7 +30,7 @@ function App() {
   
   return (
     <MainContext.Provider value={initialState}>
-      <div>
+      <div className='main'>
           <Navbar />
           <ListOfNotes />
       </div>

@@ -1,12 +1,12 @@
 //css
 import cl from './HashtagsNote.module.css';
 
-function HashtagsNote({ edit, hashtags, deleteHashtegs }) {
+function HashtagsNote({ edit, hashtags, deleteHashtegs, id }) {
 
     const titleCheck = edit ? 'to delete it, click edit' : 'delete hashteg';
 
     return ( 
-        <div className={cl.hashtags}>
+        <div id={id + 1} className={cl.hashtags}>
                 {hashtags.map((item, index) => (
                     <div
                         title={titleCheck}

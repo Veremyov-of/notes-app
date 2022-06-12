@@ -1,13 +1,19 @@
+.formWrapp {
+    margin: 10px;
+    width: 300px;
+    height: auto;
+    animation: noteCreate .3s linear;
+}
+
 .form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 10px;
+    /* margin: 10px; */
     background-color: #000;
-    width: 300px;
+    min-width: 300px;
     min-height: 250px;
     border: 2px solid #fff;
-    animation: noteCreate .3s linear;
 }
 
 @keyframes noteCreate {

@@ -24,7 +24,7 @@ function ListOfNotes() {
     }, [notes]);
     return (
         <div className={navbar ? `${cl.listOfNotes} ${cl.active}` : cl.listOfNotes}>
-            {noteFilter.map((item) => <NoteItem key={item.id} item={item}/>)}
+            {noteFilter.map((note) => <NoteItem key={note.id} note={note}/>)}
         </div>
       );
 }
