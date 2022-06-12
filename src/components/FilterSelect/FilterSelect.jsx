@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { MainContext } from './../../Context/index';
 
 //css
-import cl from './FilterSelect.module.css';
+import './FilterSelect.scss';
 
 function FilterSelect() {
     
@@ -13,9 +13,9 @@ function FilterSelect() {
     }
 
     return ( 
-        <select className={cl.filterSelect} onChange={changeSelectTag()} value={selectTag}>
+        <select className='filterSelect' onChange={changeSelectTag()} value={selectTag}>
             {globalhashtags.map((item, index) => {
-                return <option className={cl.hashOption} value={item} key={index}>{item}</option>
+                return <option className='hashOption' value={item} key={index}>{item}</option>
             })}
         </select>
      );

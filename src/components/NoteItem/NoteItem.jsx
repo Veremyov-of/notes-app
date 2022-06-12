@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { MainContext } from './../../Context/index';
 
 //components
@@ -7,7 +7,7 @@ import TextArea from '../TextArea/TextArea';
 import HeaderNote from './../HeaderNote/HeaderNote';
 
 //css
-import cl from './NoteItem.module.css';
+import './NoteItem.scss';
 
 function NoteItem({ note }) {
     const { notes, setNotes } = useContext(MainContext);
@@ -71,8 +71,8 @@ function NoteItem({ note }) {
     
 
     return (
-         <div className={cl.formWrapp}>
-            <div id={noteItem.id} className={cl.form}>
+         <div className='formWrapp'>
+            <div id={noteItem.id} className='form'>
                 <HeaderNote edit={edit} deleteNote={deleteNote} handleEdit={handleEdit} title={noteItem.title} changeTitle={changeTitle} />
                 <TextArea edit={edit} textArea={noteItem.text} changeText={changeText} />
             </div>

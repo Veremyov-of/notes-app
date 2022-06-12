@@ -5,7 +5,7 @@ import { MainContext } from './../../Context/index';
 import FilterSelect from '../FilterSelect/FilterSelect';
 
 //css
-import cl from './Navbar.module.css';
+import './Navbar.scss';
 
 function Navbar() {
     const {navbar, setNavbar, notes, setNotes, setSelectTag} = useContext(MainContext);
@@ -23,16 +23,16 @@ function Navbar() {
 
 
     return (
-        <div className={navbar ? `${cl.navbar} ${cl.navbarActive}` : cl.navbar}>
-            <div className={cl.menu}>
-                <button onClick={createNote} className={cl.btn}>
+        <div className={navbar ? `navbar navbarActive` : `navbar`}>
+            <div className='menu'>
+                <button onClick={createNote} className='btn'>
                     Add a Note 
                     <img alt="add" src="./img/icon/add.png"/>
                 </button>
                 <FilterSelect />
             </div>
-            <button onClick={() => setNavbar(!navbar)} className={cl.menuToggle}> 
-                <img className={navbar ? cl.arrow : cl.arrowActive} alt='menuToggle' src="./img/icon/arrow.png" />
+            <button onClick={() => setNavbar(!navbar)} className='menuToggle'> 
+                <img className={navbar ? `arrow` : `arrowActive`} alt='menuToggle' src="./img/icon/arrow.png" />
             </button>
         </div>
       );

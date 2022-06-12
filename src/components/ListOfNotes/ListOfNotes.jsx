@@ -5,7 +5,7 @@ import { MainContext } from './../../Context/index';
 import NoteItem from '../NoteItem/NoteItem';
 
 //css
-import cl from './ListOfNotes.module.css';
+import './ListOfNotes.scss';
 
 function ListOfNotes() {
     const {navbar, notes, selectTag, noteFilter, setNoteFilter, setGlobalHashtags} = useContext(MainContext);
@@ -23,7 +23,7 @@ function ListOfNotes() {
         setGlobalHashtags([...new Set(['none', ...arr])]);
     }, [notes]);
     return (
-        <div className={navbar ? `${cl.listOfNotes} ${cl.active}` : cl.listOfNotes}>
+        <div className={navbar ? `listOfNotes active` : `listOfNotes`}>
             {noteFilter.map((note) => <NoteItem key={note.id} note={note}/>)}
         </div>
       );
