@@ -1,5 +1,5 @@
 //css
-import './TextArea.scss';
+import '../../style/styleComponents/TextArea/TextArea.scss';
 
 function TextArea({ edit, textArea, changeText}) {
 

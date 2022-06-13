@@ -7,7 +7,7 @@ import TextArea from '../TextArea/TextArea';
 import HeaderNote from './../HeaderNote/HeaderNote';
 
 //css
-import './NoteItem.scss';
+import '../../style/styleComponents/NoteItem/NoteItem.scss';
 
 function NoteItem({ note }) {
     const { notes, setNotes } = useContext(MainContext);

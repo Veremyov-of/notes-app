@@ -1,3 +1,5 @@
+@import '../../Global/variables';
+
 .wrappText {
     width: 100%;
     position: relative;
@@ -52,9 +54,9 @@
     position: relative;
     left: -1px;
     border-radius: 5px;
-    background-color: rgb(79, 196, 97);
+    background-color: $colorHashtagOne;
 }
 
 .hashSpan:nth-child(2n) {
-    background-color: rgb(79, 112, 196);
+    background-color: $colorHashtagTwo;
 }

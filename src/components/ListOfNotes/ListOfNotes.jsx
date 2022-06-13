@@ -5,7 +5,7 @@ import { MainContext } from './../../Context/index';
 import NoteItem from '../NoteItem/NoteItem';
 
 //css
-import './ListOfNotes.scss';
+import '../../style/styleComponents/ListOfNote/ListOfNotes.scss';
 
 function ListOfNotes() {
     const {navbar, notes, selectTag, noteFilter, setNoteFilter, setGlobalHashtags} = useContext(MainContext);

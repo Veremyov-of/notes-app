@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { MainContext } from './../../Context/index';
 
 //css
-import './FilterSelect.scss';
+import '../../style/styleComponents/FilterSelect/FilterSelect.scss';
 
 function FilterSelect() {
     

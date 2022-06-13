@@ -1,9 +1,9 @@
 //css
-import './HeaderNote.scss';
+import '../../style/styleComponents/HeaderNote/HeaderNote.scss';
 
 function HeaderNote({ edit, deleteNote, handleEdit, title, changeTitle}) {
 
-    const clBtnEdit = edit ? `btn` : `btn btnActive`;
+    const clBtnEdit = edit ? `btnHeader` : `btnHeader btnActive`;
 
     return ( 
         <div className='wrapp'>
@@ -11,7 +11,7 @@ function HeaderNote({ edit, deleteNote, handleEdit, title, changeTitle}) {
             <button title="edit" type="button" className={clBtnEdit} onClick={() => handleEdit()}>
                 <img alt="edit" src={edit ? `./img/icon/edit.png` : `./img/icon/done.png`}/>
             </button>
-            <button title='delete note' onClick={deleteNote} type="button" className='btn'>
+            <button title='delete note' onClick={deleteNote} type="button" className='btnHeader'>
                 <img alt="delete" src="./img/icon/delete.png" />
             </button>
         </div>

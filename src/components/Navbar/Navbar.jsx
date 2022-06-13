@@ -5,7 +5,7 @@ import { MainContext } from './../../Context/index';
 import FilterSelect from '../FilterSelect/FilterSelect';
 
 //css
-import './Navbar.scss';
+import '../../style/styleComponents/Navbar/Navbar.scss';
 
 function Navbar() {
     const {navbar, setNavbar, notes, setNotes, setSelectTag} = useContext(MainContext);

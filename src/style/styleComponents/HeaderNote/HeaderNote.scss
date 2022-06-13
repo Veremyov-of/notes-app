@@ -18,10 +18,10 @@
     height: 100%;
 }
 
-.btn {
+.btnHeader {
     outline: none;
     border: none;
-    min-width: 38px;
+    min-width: 50px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -29,15 +29,15 @@
     cursor: pointer;
     border-left: 2px solid #fff;
     background-color: #000;
+
+    &:last-child:hover {
+        background-color: #ef4747;
+    }
+    &:nth-child(2):hover {
+        background-color: #47cdef;
+    }
 }
 
 .btnActive {
     background-color: #47ef5b;
-}
-
-.btn:last-child:hover {
-    background-color: #ef4747;
-}
-.btn:nth-child(2):hover {
-    background-color: #47cdef;
 }

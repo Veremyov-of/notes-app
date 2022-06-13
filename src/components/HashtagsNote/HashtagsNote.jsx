@@ -1,5 +1,5 @@
 //css
-import './HashtagsNote.scss';
+import '../../style/styleComponents/HashtagsNote/HashtagsNote.scss';
 
 function HashtagsNote({ edit, hashtags, deleteHashtegs, id }) {
 
